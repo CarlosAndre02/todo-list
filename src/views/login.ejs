@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/login.css">
+    
+</head>
+<body>
+    <section>
+        <h2 class="sr-only">Cadastro e Login</h2>
+        
+        <form class="form-login" action='/login/register' method="POST">
+            <%- include('includes/messages') %>
+            <h3 class="form-title">Crie uma conta</h3>
+            
+            <div class="error-message"></div>
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="input-group">
+                <label class="sr-only" for="form-signup-email">Email</label>
+                <input class="form-field" id="form-signup-email" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <label class="sr-only" for="form-password">Senha</label>
+                <input class="form-field" id="form-signup-password" type="password" name="password" placeholder="Senha">
+            </div>
+            
+            <button class="button">Criar</button>
+        </form>
+        <form class="form-login" action="/login/login" method="POST">
+            <h3 class="form-title">Já tem uma conta? Entre</h3>
+            
+            <div class="error-message"></div>
+            
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="input-group">
+                <label class="sr-only" for="form-login-email">Email</label>
+                <input class="form-field" id="form-login-email" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <label class="sr-only" for="form-login-password">Senha</label>
+                <input class="form-field" id="form-login-password" type="password" name="password" placeholder="Senha">
+            </div>
+
+            <button class="button">Entrar</button>
+        </form>
+    </section>
+    
+    <script src="/scripts/bundle.js"></script>
+</body>
+</html>

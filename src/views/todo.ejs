@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/todo.css">
+</head>
+<body>
+    <header class="header">
+        <div class="user-icon-wrapper">
+            <img class="user-icon" src="/images/user-icon.svg" alt="User Icon">
+        </div>
+        <div class="menu">
+            <p class="menu-title">Logado em:</p>
+            <p class="menu-email"><%= user.email %></p>
+            <a class="menu-logout-button" href="/login/logout">Log Out</a>
+        </div>
+    </header>
+    <section class="main-section">
+        <h2 class="main-section-title">Todo List</h2>
+        <div class="filter-button-group">
+            <button class="filter-button selected" data-type="all">Todas</button>
+            <button class="filter-button" data-type="active">Ativas</button>
+            <button class="filter-button" data-type="completed">Completadas</button>
+        </div>
+
+        <%- include('includes/messages') %>
+        
+        <div class="todo-container">
+            <% todos.forEach(todo => { %>
+                <div class="todo <%= todo.status %>" data-id="<%= todo._id %>">
+                    <div class="todo-checkbox"></div>
+                    <p class="todo-text"><%= todo.todo %></p>
+                    <div class="todo-actions">
+                        <button class="todo-actions-button edit-todo-button">
+                            <img src="/images/edit-icon.svg" alt="Edit Icon">
+                        </button>
+                        <button class="todo-actions-button delete-todo-button">
+                            <img src="/images/trash-icon.svg" alt="Trash Icon">
+                        </button>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <button class="add-todo-button">Adicionar tarefa</button>
+    </section>
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-create">
+                <h2 class="modal-title">Criar todo</h2>
+    
+                <form class="form-create" action="/todo/create" method="POST">
+                    <input type="hidden" name="email" value="<%= user.email %>">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div class="input-group">
+                        <label class="sr-only" for="modal-create-input">Tarefa</label>
+                        <input id="modal-create-input" type="text" name="todo">
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="modal-button cancel-button gray-bg" type="button">Cancelar</button>
+                        <button class="modal-button green-bg" type="submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-update">
+                <h2 class="modal-title">Editar todo</h2>
+                
+                <div class="input-group">
+                    <label class="sr-only" for="modal-edit-input">Tarefa</label>
+                    <input id="modal-edit-input" type="text" name="todo">
+                </div>
+
+                <div class="modal-actions">
+                    <button class="modal-button cancel-button gray-bg">Cancelar</button>
+                    <button class="modal-button modal-update-button green-bg">Salvar</button>
+                </div>
+            </div>
+            <div class="modal-delete">
+                <h2 class="modal-title">Tem certeza?</h2>
+                
+                <div class="modal-actions">
+                    <button class="modal-button cancel-button gray-bg">Cancelar</button>
+                    <a class="modal-button modal-delete-button red-bg">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/bundle.js"></script>
+</body>
+</html>

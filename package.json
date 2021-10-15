@@ -1,0 +1,36 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "webpack -w",
+    "start": "nodemon ."
+  },
+  "keywords": [],
+  "author": "Carlos André",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "core-js": "^3.18.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.8",
+    "regenerator-runtime": "^0.13.9",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.13",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  }
+}

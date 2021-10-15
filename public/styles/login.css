@@ -1,0 +1,55 @@
+body {
+    height: 100vh;
+    padding: 1.8em;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    padding: 0 1.6em;
+    transform: translateY(-40px);
+    width: min(300px, 100%);
+}
+
+.form-title {
+    font-size: clamp(1.4rem, 1.1rem + 1vw, 2.2rem);
+    margin: 1.8em 0 .5em;
+    text-align: center;
+}
+
+.form-field {
+    padding: .2em .6em;
+    width: 100%;
+}
+
+#form-signup-password,
+#form-login-password {
+    margin: .6em 0; 
+}
+
+.button {
+    border: none;
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: pointer;
+    padding: .2em 0;
+    transition: opacity .2s;
+    width: 100%;
+}
+
+.button:hover {
+    opacity: .85;
+}
+
+@media (min-width: 800px) {
+    body {
+        background: url('/images/login-bg-img.svg') no-repeat left/40%; 
+        background-position-x: 5.5rem;
+        
+        justify-content: flex-end;
+        transform: translateX(-4rem);
+    }
+}
